@@ -1,6 +1,6 @@
 # UniBuildNumber
 
-Build number getter in iOS & Android
+Build number getter at runtime on iOS and Android.
 
 # UPM Package
 
