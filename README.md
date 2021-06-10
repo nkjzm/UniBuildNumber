@@ -10,6 +10,7 @@ You can add `https://github.com/nkjzm/UniBuildNumber.git?path=Assets/UniBuildNum
 
 # LICENSE
 
+[MIT LICENSE](https://github.com/nkjzm/UniBuildNumber/blob/master/LICENSE)
 
 # Author
 
