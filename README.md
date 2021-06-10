@@ -11,6 +11,19 @@ After Unity 2019.3.4f1, Unity 2020.1a21, that support path query parameter of gi
 3. Click "+" > "Add package from git URL...".
 4. Enter `https://github.com/nkjzm/UniBuildNumber.git?path=Assets/UniBuildNumber` and click "Add".
 
+# Usage
+
+```.cs
+// Get build number in current platform (iOS or Android)
+string buildNumber = nkjzm.UniBuildNumber.GetCurrentBuildNumber();
+
+// Get build number in iOS
+string buildNumber_ios = nkjzm.UniBuildNumber.GetIOSBuildNumber();
+
+// Get build number in Android
+int buildNumber_android = nkjzm.UniBuildNumber.GetAndroidVersionCode();
+```
+
 # LICENSE
 
 [MIT LICENSE](https://github.com/nkjzm/UniBuildNumber/blob/master/LICENSE)
