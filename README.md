@@ -6,7 +6,10 @@ Build number getter in iOS & Android
 
 After Unity 2019.3.4f1, Unity 2020.1a21, that support path query parameter of git package. 
 
-You can add `https://github.com/nkjzm/UniBuildNumber.git?path=Assets/UniBuildNumber` to Package Manager.
+1. Open your Unity project.
+2. Open `Window -> Package Manager`.
+3. Click "+" > "Add package from git URL...".
+4. Enter `https://github.com/nkjzm/UniBuildNumber.git?path=Assets/UniBuildNumber` and click "Add".
 
 # LICENSE
 
