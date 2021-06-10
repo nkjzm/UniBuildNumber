@@ -10,18 +10,44 @@ namespace nkjzm
 {
     public static class UniBuildNumber
     {
-        public static string GetBuildNumber()
+        /// <summary>
+        /// Get build number in current platform (iOS or Android)
+        /// </summary>
+        /// <remarks> Return "0" in other platform </remarks>
+        /// <returns> Build number in current platform(iOS or Android) </returns>
+        public static string GetCurrentBuildNumber()
+        {
+#if UNITY_IOS
+            return GetIOSBuildNumber();
+#elif UNITY_ANDROID
+            return GetAndroidVersionCode();
+#else
+            return "0";
+#endif
+        }
+
+        /// <summary>
+        /// Get build number in iOS
+        /// </summary>
+        /// <remarks> Return "0" in other platform </remarks>
+        /// <returns> Build number in iOS </returns>
+        public static string GetIOSBuildNumber()
         {
 #if UNITY_EDITOR
             return PlayerSettings.iOS.buildNumber;
 #elif UNITY_IOS
             return GetBundleVersion();
 #else
-            return string.Empty;
+            return "0";
 #endif
         }
 
-        public static int GetVersionCode()
+        /// <summary>
+        /// Get build number in Android
+        /// </summary>
+        /// <remarks> Return 0 in other platform </remarks>
+        /// <returns> Build number in Android </returns>
+        public static int GetAndroidVersionCode()
         {
 #if UNITY_EDITOR
             return PlayerSettings.Android.bundleVersionCode;
