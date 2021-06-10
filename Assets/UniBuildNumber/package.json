@@ -3,5 +3,7 @@
   "version": "1.0.0",
   "displayName": "UniBuildNumber",
   "description": "Build number getter in iOS & Android",
-  "unity": "2021.1"
+  "unity": "2021.1",
+  "license": "MIT",
+  "dependencies": {}
 }
