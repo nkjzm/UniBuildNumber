@@ -3,8 +3,8 @@ using System.Runtime.InteropServices;
 #endif
 #if UNITY_EDITOR
 using UnityEditor;
-
 #endif
+using UnityEngine;
 
 namespace nkjzm
 {
@@ -20,7 +20,7 @@ namespace nkjzm
 #if UNITY_IOS
             return GetIOSBuildNumber();
 #elif UNITY_ANDROID
-            return GetAndroidVersionCode();
+            return GetAndroidVersionCode().ToString();
 #else
             return "0";
 #endif
@@ -67,18 +67,16 @@ namespace nkjzm
 #endif
 
 #if UNITY_ANDROID
-        static AndroidJavaObject GetPackageInfo()
+        private static AndroidJavaObject GetPackageInfo()
         {
-            using (var unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
-            using (var currentActivity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity"))
-            using (var context = currentActivity.Call<AndroidJavaObject>("getApplicationContext"))
-            using (var packageManager = context.Call<AndroidJavaObject>("getPackageManager"))
-            using (var packageManagerClass = new AndroidJavaClass("android.content.pm.PackageManager"))
-            {
-                string packageName = context.Call<string>("getPackageName");
-                int activities = packageManagerClass.GetStatic<int>("GET_ACTIVITIES");
-                return packageManager.Call<AndroidJavaObject>("getPackageInfo", packageName, activities);
-            }
+            using var unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+            using var currentActivity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
+            using var context = currentActivity.Call<AndroidJavaObject>("getApplicationContext");
+            using var packageManager = context.Call<AndroidJavaObject>("getPackageManager");
+            using var packageManagerClass = new AndroidJavaClass("android.content.pm.PackageManager");
+            var packageName = context.Call<string>("getPackageName");
+            var activities = packageManagerClass.GetStatic<int>("GET_ACTIVITIES");
+            return packageManager.Call<AndroidJavaObject>("getPackageInfo", packageName, activities);
         }
 #endif
     }
