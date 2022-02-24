@@ -1,3 +1,5 @@
+[日本語版 README](https://github.com/nkjzm/UniBuildNumber/blob/master/README-ja.md)
+
 # UniBuildNumber
 
 Build number getter at runtime on iOS and Android.
